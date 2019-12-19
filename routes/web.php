@@ -11,8 +11,9 @@
 |
 */
 
-Route::get('/', 'Site\HomeController@index');
+Route::get('/', 'Site\HomeController@index')->name('site.home');
 
 Route::prefix('admin')->group(function(){
-    Route::get('/', 'Admin\HomeController@index');
+    Route::get('/', 'Admin\HomeController@index')->name('admin.home');
+    Route::get('login', 'Admin\Auth\LoginController@index')->name('login');
 });
