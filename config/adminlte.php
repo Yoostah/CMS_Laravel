@@ -189,6 +189,7 @@ return [
             'text'        => 'Usuários',
             'url'         => 'admin/users',
             'icon'        => 'far fa-fw fa-file',
+            'can'         => 'edit-users',
         ],
         [   'header' => 'account_settings'],
         [

@@ -14,6 +14,7 @@ class UserController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
+        $this->middleware('can:edit-users');
     }
 
     /**
@@ -201,7 +202,7 @@ class UserController extends Controller
         if($loggedUser != $id){
             $userExists = User::find($id);
 
-            if(count($userExists) > 0){
+            if($userExists){
                 $userExists->delete();
                 return redirect()->route('users.index');
             }
