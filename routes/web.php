@@ -23,4 +23,7 @@ Route::prefix('admin')->group(function(){
     Route::get('register', 'Admin\Auth\RegisterController@index')->name('signin');
     Route::post('register', 'Admin\Auth\RegisterController@register');
 
+    Route::resource('users', 'Admin\UserController');
+    Route::resource('pages', 'Admin\PageController');
+
 });
