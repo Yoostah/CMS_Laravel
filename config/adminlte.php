@@ -14,9 +14,9 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
-    'title_prefix' => '',
-    'title_postfix' => '',
+    'title' => 'CMS - Laravel',
+    'title_prefix' => 'CMS - Laravel :: ',
+    'title_postfix' => ' :: ',
 
     /*
     |--------------------------------------------------------------------------
@@ -30,12 +30,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>CMS</b> Laravel',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => 'CMS - Laravel',
 
     /*
     |--------------------------------------------------------------------------
@@ -134,13 +134,13 @@ return [
 
     'use_route_url' => false,
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'admin',
 
-    'logout_url' => 'logout',
+    'logout_url' => 'admin/logout',
 
-    'login_url' => 'login',
+    'login_url' => 'admin/login',
 
-    'register_url' => 'register',
+    'register_url' => 'admin/register',
 
     'password_reset_url' => 'password/reset',
 

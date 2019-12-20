@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Admin\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+
 
 class LoginController extends Controller
 {
@@ -39,6 +43,43 @@ class LoginController extends Controller
     }
 
     public function index(){
-        echo 'Tela de Login';
+        return view('admin.login');
+    }
+
+    public function login(Request $request){
+        $user = $request->only(['email', 'password']);
+
+        $remember = $request->input('remember', false);
+
+        $logar = $this->validator($user);
+
+        if($logar->fails()){
+            return redirect()->route('login')
+            ->withErrors($logar)
+            ->withInput();
+        }
+
+        if(Auth::attempt($user, $remember)){
+            return redirect()->route('admin.home');
+        }else{
+            $logar->errors()->add('password', 'E-mail e/ou senha inválidos!');
+
+            return redirect()->route('login')
+            ->withErrors($logar)
+            ->withInput();
+        }
+
+    }
+
+    public function validator(array $data){
+        return Validator::make($data, [
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string', 'min:4']
+        ]);
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login');
     }
 }
